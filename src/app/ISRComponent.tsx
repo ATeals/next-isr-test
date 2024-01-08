@@ -1,7 +1,15 @@
 import { DOMAIN } from "./api/domain";
 
 export const ISRComponent = async () => {
-  const res = await fetcher();
+  const res = await (
+    await fetch(`${DOMAIN}/api/random`, {
+      next: { revalidate: false, tags: ["random"] },
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+      },
+    })
+  ).json();
 
   console.log(res);
 
@@ -11,16 +19,4 @@ export const ISRComponent = async () => {
       <div>Date : {res?.date}</div>
     </div>
   );
-};
-
-const fetcher = async () => {
-  return (
-    await fetch(`${DOMAIN}/api/random`, {
-      next: { revalidate: false, tags: ["random"] },
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-      },
-    })
-  ).json();
 };

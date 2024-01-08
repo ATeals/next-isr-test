@@ -1,8 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 
-export async function GET(request: NextRequest) {
-  revalidateTag("random");
+export const dynamic = "force-dynamic";
 
-  return NextResponse.json({ message: "revalidate random" });
+export async function GET() {
+  const tag = "random";
+  revalidateTag(tag);
+  return Response.json({ revalidated: true, now: Date.now() });
 }
