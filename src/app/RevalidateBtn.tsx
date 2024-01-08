@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { DOMAIN } from "./ISRComponent";
+import { DOMAIN } from "./api/domain";
 
 export const RevalidateBtn = () => {
   const router = useRouter();

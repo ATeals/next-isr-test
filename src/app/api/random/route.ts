@@ -7,8 +7,11 @@ export async function GET(request: Request) {
     }, 1000);
   });
 
+  const randomNum = Math.random();
+  const date = Date.now();
+
   return NextResponse.json({
-    randomNum: Math.random(),
-    date: Date.now(),
+    randomNum,
+    date,
   });
 }

@@ -1,15 +1,11 @@
-import { Suspense } from "react";
-import { ISRComponent } from "./ISRComponent";
-import { RevalidateBtn } from "./RevalidateBtn";
+import Link from "next/link";
 
 const Page = async () => {
   return (
     <div>
-      <Suspense fallback={<h1>loading...</h1>}>
-        <ISRComponent />
-      </Suspense>
-
-      <RevalidateBtn />
+      <Link href={"/static"}>Static Router</Link>
+      <br />
+      <Link href={"/1239712309"}>Dynamic Router</Link>
     </div>
   );
 };
